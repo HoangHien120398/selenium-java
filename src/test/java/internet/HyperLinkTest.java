@@ -9,7 +9,6 @@ import org.testng.annotations.Test;
 import supports.Browser;
 
 public class HyperLinkTest {
-    WebDriver driver;
     HyperLinkPage hyperLinkPage;
     @BeforeMethod
     public void setup(){

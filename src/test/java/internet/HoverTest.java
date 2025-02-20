@@ -1,0 +1,154 @@
+package internet;
+
+import java.io.File;
+import java.io.IOException;
+import java.time.Duration;
+
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class HoverTest {
+    @Test
+    void hoverToImage(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/hovers");
+
+        Actions actions = new Actions(driver);
+        WebElement image1 = driver.findElement(By.xpath("//div[@class='example']/div[1]/img"));
+        actions.moveToElement(image1).perform();
+
+        String image1Profile = driver.findElement(By.xpath("//div[@class='example']/div[1]/div/h5")).getText();
+        Assert.assertEquals(image1Profile,"name: user1");
+
+
+    }
+
+    @Test
+    void dragDropElements(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/drag_and_drop");
+
+        Actions actions = new Actions(driver);
+
+        WebElement source = driver.findElement(By.id("column-a"));
+        WebElement target = driver.findElement(By.id("column-b"));
+        
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-a']/header")).getText(),"A");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-b']/header")).getText(),"B");
+
+        actions.dragAndDrop(source,target).perform();
+
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-a']/header")).getText(),"B");
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-b']/header")).getText(),"A");
+    }
+    @Test
+    void horizontalSlider(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
+
+        Actions actions = new Actions(driver);
+
+        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
+        int width = pointer.getSize().getWidth();
+
+        actions.clickAndHold(pointer).moveByOffset(width,0).perform();
+
+        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
+    }
+
+@Test
+    void horizontalSliderThrowEx() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
+
+        Actions actions = new Actions(driver);
+
+        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
+        int width = pointer.getSize().getWidth();
+
+        actions.clickAndHold(pointer).moveByOffset(width,0).perform();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+        Assert.assertTrue(wait.until(ExpectedConditions.textToBe(By.id("range"),"5")));
+    }
+
+    @Test
+    void scrollDown() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/infinite_scroll");
+
+        Actions actions = new Actions(driver);
+
+        for (int i = 0; i < 5; i++) {
+            actions.scrollByAmount(0,500).perform();
+            Thread.sleep(2000);
+        }
+    }
+
+    @Test
+    void rightClick(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/context_menu");
+
+        Actions actions = new Actions(driver);
+        actions.contextClick(driver.findElement(By.id("hot-spot"))).perform();
+        driver.switchTo().alert().accept();
+    }
+
+    @Test
+    void keyPress(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/key_presses");
+        Actions actions = new Actions(driver);
+
+        actions.keyDown(Keys.COMMAND).perform();
+        System.out.println(driver.findElement(By.id("result")).getText());
+
+        actions.keyDown("A").perform();
+        System.out.println(driver.findElement(By.id("result")).getText());
+
+        actions.keyDown(Keys.ENTER).perform();
+        System.out.println(driver.findElement(By.id("result")).getText());
+
+    }
+    @Test
+    void dynamicLoading() throws InterruptedException {
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
+        driver.findElement(By.xpath("//button[.='Start']")).click();
+
+//        Thread.sleep(5000);
+        WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
+
+        Assert.assertEquals(driver.findElement(By.id("finish")).getText(),"Hello World!");
+    }
+
+  
+    @Test
+    void captureScreenShot(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/context_menu");
+
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        File destFile = new File(String.format("target/screenshot-%s-%s.png", "context-menu", System.currentTimeMillis()));
+        try {
+            FileUtils.copyFile(srcFile, destFile);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+}

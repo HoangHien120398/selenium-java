@@ -1,0 +1,9 @@
+<suite name="Sample">
+    <test name="Chrome browser">
+        <parameter name="browser" value="chrome"/>
+        <parameter name="url" value="https://the-internet.herokuapp.com"/>
+        <classes>
+            <class name="internet.CheckboxesTest"/>
+        </classes>
+    </test>
+</suite>

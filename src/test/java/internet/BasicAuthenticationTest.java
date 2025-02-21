@@ -10,7 +10,7 @@ import org.testng.annotations.Test;
 public class BasicAuthenticationTest {
     @Test
     void loginSuccess(){
-         WebDriver driver = new ChromeDriver();
+        WebDriver driver = new ChromeDriver();
         driver.get("https://admin:admin@the-internet.herokuapp.com/basic_auth");
         
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='content']//p")).getText()

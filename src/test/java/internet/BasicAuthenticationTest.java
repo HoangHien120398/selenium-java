@@ -15,5 +15,6 @@ public class BasicAuthenticationTest {
         
         Assert.assertTrue(driver.findElement(By.xpath("//div[@id='content']//p")).getText()
                 .contains("Congratulations! You must have the proper credentials."));
+        driver.quit();
     }
 }

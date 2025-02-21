@@ -10,7 +10,7 @@ public class DropDownFruitsPage {
         select = new Select(Browser.getElement(By.id("fruits")));
     }
     public void open(){
-        Browser.visit("https://the-internet.herokuapp.com/dropdown");
+        Browser.visit("https://output.jsbin.com/osebed/2");
     }
 
     public DropDownFruitsPage select(String option){

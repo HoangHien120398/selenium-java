@@ -20,5 +20,6 @@ public class BrokenImageTest {
                 System.out.println("Image is loaded");
             }
         });
+        driver.quit();
     }
 }

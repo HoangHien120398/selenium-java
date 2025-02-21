@@ -14,25 +14,26 @@
      driver.get("https://the-internet.herokuapp.com/nested_frames");
      driver.switchTo().frame("frame-top");
      driver.switchTo().frame("frame-left");
-     String content = driver.findElement(By.xpath("/html/body")).getText();
-     System.out.println(content);
-
-     Assert.assertTrue(content.contains("LEFT"));
+     String content_left = driver.findElement(By.xpath("/html/body")).getText();
+     //System.out.println(content);
+     Assert.assertTrue(content_left.contains("LEFT"));
 
      driver.switchTo().parentFrame();
      driver.switchTo().frame("frame-middle");
-     content = driver.findElement(By.id("content")).getText();
-     Assert.assertEquals(content, "MIDDLE");
+     String content_middle = driver.findElement(By.id("content")).getText();
+     Assert.assertEquals(content_middle, "MIDDLE");
 
      driver.switchTo().parentFrame();
      driver.switchTo().frame("frame-right");
-     // content = driver.findElement(By.id("content")).getText();
-     // Assert.assertEquals(content, "RIGHT");
+     String content_right = driver.findElement(By.xpath("/html/body")).getText();
+     Assert.assertEquals(content_right, "RIGHT");
 
      driver.switchTo().defaultContent();
      driver.switchTo().frame("frame-bottom");
-     content = driver.findElement(By.id("content")).getText();
-     Assert.assertEquals(content, "BOTTOM");
+     String content_bottom = driver.findElement(By.xpath("/html/body")).getText();
+     Assert.assertEquals(content_bottom, "BOTTOM");
+
+     driver.quit();
 
      }
     

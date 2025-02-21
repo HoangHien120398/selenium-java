@@ -8,7 +8,7 @@ public class JavaScripAlertPage {
 
 
     public void clickButton(String clickForJS){
-        Browser.click(By.xpath(String.format("//button[.='Click for JS [%s]']",clickForJS)));
+        Browser.click(By.xpath(String.format("//button[.='Click for JS %s']",clickForJS)));
 
 //        driver.findElement(By.xpath("//button[.='Click for JS Alert']")).click();
 //        driver.findElement(By.xpath("//button[.='Click for JS Confirm']")).click();

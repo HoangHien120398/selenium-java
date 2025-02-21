@@ -49,5 +49,6 @@ public class BookingFlightTest {
         driver.findElement(By.className("confirm-dates")).click();
 
         Assert.assertEquals(driver.findElement(By.id("roundtrip-date-depart")).getDomProperty("value"),"10/01/2025");
+        driver.quit();
     }
 }

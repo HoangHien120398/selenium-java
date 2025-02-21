@@ -30,8 +30,7 @@ public class HoverTest {
 
         String image1Profile = driver.findElement(By.xpath("//div[@class='example']/div[1]/div/h5")).getText();
         Assert.assertEquals(image1Profile,"name: user1");
-
-
+        driver.quit();
     }
 
     @Test
@@ -51,21 +50,25 @@ public class HoverTest {
 
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-a']/header")).getText(),"B");
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-b']/header")).getText(),"A");
+        driver.quit();
     }
-    @Test
-    void horizontalSlider(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
-
-        Actions actions = new Actions(driver);
-
-        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
-        int width = pointer.getSize().getWidth();
-
-        actions.clickAndHold(pointer).moveByOffset(width,0).perform();
-
-        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
-    }
+//    @Test
+//    void horizontalSlider(){
+//        WebDriver driver = new ChromeDriver();
+//        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
+//
+//        Actions actions = new Actions(driver);
+//
+//        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
+//        int width = pointer.getSize().getWidth();
+//
+//        actions.clickAndHold(pointer)
+//                .moveByOffset(width,0)
+//                .perform();
+//
+//        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
+//        driver.quit();
+//    }
 
 @Test
     void horizontalSliderThrowEx() throws InterruptedException {
@@ -77,10 +80,13 @@ public class HoverTest {
         WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
         int width = pointer.getSize().getWidth();
 
-        actions.clickAndHold(pointer).moveByOffset(width,0).perform();
+        actions.clickAndHold(pointer)
+                .moveByOffset(width,0)
+                .perform();
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         Assert.assertTrue(wait.until(ExpectedConditions.textToBe(By.id("range"),"5")));
+        driver.quit();
     }
 
     @Test
@@ -94,6 +100,7 @@ public class HoverTest {
             actions.scrollByAmount(0,500).perform();
             Thread.sleep(2000);
         }
+        driver.quit();
     }
 
     @Test
@@ -104,6 +111,7 @@ public class HoverTest {
         Actions actions = new Actions(driver);
         actions.contextClick(driver.findElement(By.id("hot-spot"))).perform();
         driver.switchTo().alert().accept();
+        driver.quit();
     }
 
     @Test
@@ -120,7 +128,7 @@ public class HoverTest {
 
         actions.keyDown(Keys.ENTER).perform();
         System.out.println(driver.findElement(By.id("result")).getText());
-
+        driver.quit();
     }
     @Test
     void dynamicLoading() throws InterruptedException {
@@ -133,6 +141,7 @@ public class HoverTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
 
         Assert.assertEquals(driver.findElement(By.id("finish")).getText(),"Hello World!");
+        driver.quit();
     }
 
   

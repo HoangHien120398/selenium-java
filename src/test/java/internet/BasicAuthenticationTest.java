@@ -12,16 +12,16 @@ import org.testng.annotations.Test;
 import supports.Browser;
 
 public class BasicAuthenticationTest {
+    BasicAuthenticationPage basicAuthenticationPage = new BasicAuthenticationPage();
     @BeforeMethod
     void setup(){
         Browser.openBrowser("chrome");
+        basicAuthenticationPage = new BasicAuthenticationPage();
+        basicAuthenticationPage.open();
     }
 
     @Test
     void loginSuccess(){
-        BasicAuthenticationPage basicAuthenticationPage = new BasicAuthenticationPage();
-        basicAuthenticationPage.open();
-
         Assert.assertTrue(basicAuthenticationPage.checkContainWithText("Congratulations! You must have the proper credentials."));
     }
 

@@ -52,23 +52,23 @@ public class HoverTest {
         Assert.assertEquals(driver.findElement(By.xpath("//div[@id='column-b']/header")).getText(),"A");
         driver.quit();
     }
-//    @Test
-//    void horizontalSlider(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
-//
-//        Actions actions = new Actions(driver);
-//
-//        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
-//        int width = pointer.getSize().getWidth();
-//
-//        actions.clickAndHold(pointer)
-//                .moveByOffset(width,0)
-//                .perform();
-//
-//        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
-//        driver.quit();
-//    }
+    @Test
+    void horizontalSlider(){
+        WebDriver driver = new ChromeDriver();
+        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
+
+        Actions actions = new Actions(driver);
+
+        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
+        int width = pointer.getSize().getWidth();
+
+        actions.clickAndHold(pointer)
+                .moveByOffset(width,0)
+                .perform();
+
+        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
+        driver.quit();
+    }
 
 @Test
     void horizontalSliderThrowEx() throws InterruptedException {

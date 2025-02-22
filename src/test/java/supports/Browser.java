@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -13,6 +14,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
+import java.util.List;
 
 public class Browser {
     private static WebDriver driver;
@@ -106,10 +108,19 @@ public class Browser {
     }
 
     public static WebElement getElement(By locator){
-        return driver.findElement((locator));
+        return driver.findElement(locator);
+    }
+
+    public static List<WebElement> getElements(By locator){
+        return driver.findElements(locator);
     }
 
     public static boolean isSelected(By locator){
         return driver.findElement(locator).isSelected();
+    }
+
+    public static void hover(WebElement element){
+        Actions actions = new Actions(driver);
+        actions.moveToElement(element).perform();
     }
 }

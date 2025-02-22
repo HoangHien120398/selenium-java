@@ -1,25 +1,27 @@
 package internet;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverInfo;
-import org.openqa.selenium.chrome.ChromeDriver;
+import internet.pages.BrokenImagePage;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import supports.Browser;
 
 public class BrokenImageTest {
+    BrokenImagePage brokenImagePage;
+    @BeforeMethod
+    void setup(){
+        Browser.openBrowser("chrome");
+        brokenImagePage = new BrokenImagePage();
+        brokenImagePage.open();
+    }
+
     @Test
     void verifyBrokenImage(){
-        WebDriver driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/broken_images");
-        driver.findElements(By.xpath("//div/img")).forEach( img ->{
-            int naturalHeight = Integer.parseInt( img.getDomProperty("naturalHeight"));
-            int naturalWidth = Integer.parseInt( img.getDomProperty("naturalWidth"));
-            if (naturalHeight==0 && naturalWidth==0){
-                System.out.println("Image is broken");
-            }else {
-                System.out.println("Image is loaded");
-            }
-        });
-        driver.quit();
+        brokenImagePage.checkLoadedImage();
+    }
+
+    @AfterMethod
+    void tearDown(){
+        Browser.quit();
     }
 }

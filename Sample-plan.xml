@@ -4,18 +4,18 @@
         <parameter name="url" value="https://the-internet.herokuapp.com"/>
         <classes>
             <class name="internet.BasicAuthenticationTest"/>
-<!--                        <class name="internet.BookingFlightTest"/>-->
-<!--                        <class name="internet.BrokenImageTest"/>-->
-                        <class name="internet.CheckboxesTest"/>
-                        <class name="internet.DropdownTest"/>
-                        <class name="internet.FormAuthenticationTest"/>
-<!--                        <class name="internet.HoverTest"/>-->
-                        <class name="internet.HyperLinkTest"/>
-                        <class name="internet.JavaScriptAlertTest"/>
-<!--                        <class name="internet.NestedFrameTest"/>-->
-<!--                        <class name="internet.SauceDemoTest"/>-->
-<!--                        <class name="internet.WebTableTest"/>-->
-<!--                        <class name="internet.WebTableTest1"/>-->
+            <!--                        <class name="internet.BookingFlightTest"/>-->
+            <!--                        <class name="internet.BrokenImageTest"/>-->
+            <class name="internet.CheckboxesTest"/>
+            <class name="internet.DropdownTest"/>
+            <class name="internet.FormAuthenticationTest"/>
+            <!--                        <class name="internet.HoverTest"/>-->
+            <class name="internet.HyperLinkTest"/>
+            <class name="internet.JavaScriptAlertTest"/>
+            <!--                        <class name="internet.NestedFrameTest"/>-->
+            <!--                        <class name="internet.SauceDemoTest"/>-->
+            <!--                        <class name="internet.WebTableTest"/>-->
+            <!--                        <class name="internet.WebTableTest1"/>-->
         </classes>
     </test>
 </suite>

@@ -9,7 +9,7 @@ import org.testng.annotations.Test;
 import supports.Browser;
 
 public class DropdownTest {
-
+    DropDownFruitsPage dropDownFruitsPage;
     @BeforeMethod
     public void setUp(){
         Browser.openBrowser("chrome");
@@ -24,33 +24,32 @@ public class DropdownTest {
         Assert.assertTrue(dropDownPage.isSelect("1"));
     }
 
-//    @Test
-//    void ableSelectMulipleOptions(){
-//        DropDownFruitsPage dropDownFruitsPage = new DropDownFruitsPage();
-//        dropDownFruitsPage.open();
-//
-//        dropDownFruitsPage
-//                .select("Banana")
-//                .select("Grape");
-//
-//        Assert.assertTrue(dropDownFruitsPage.isSelectedMultiple());
-//        Assert.assertTrue(dropDownFruitsPage.isSelect("Banana"));
-//        Assert.assertTrue(dropDownFruitsPage.isSelect("Grape"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
-//
-//        dropDownFruitsPage.deSelect("Banana");
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Banana"));
-//        Assert.assertTrue(dropDownFruitsPage.isSelect("Grape"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
-//
-//        dropDownFruitsPage.deSelectAll();
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Banana"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Grape"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
-//        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
-//    }
+    @Test
+    void ableSelectMulipleOptions(){
+        DropDownFruitsPage dropDownFruitsPage = new DropDownFruitsPage();
+
+        dropDownFruitsPage
+                .select("Banana")
+                .select("Grape");
+
+        Assert.assertTrue(dropDownFruitsPage.isSelectedMultiple());
+        Assert.assertTrue(dropDownFruitsPage.isSelect("Banana"));
+        Assert.assertTrue(dropDownFruitsPage.isSelect("Grape"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
+
+        dropDownFruitsPage.deSelect("Banana");
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Banana"));
+        Assert.assertTrue(dropDownFruitsPage.isSelect("Grape"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
+
+        dropDownFruitsPage.deSelectAll();
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Banana"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Grape"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Orange"));
+        Assert.assertFalse(dropDownFruitsPage.isSelect("Apple"));
+    }
 
     @AfterMethod
     public void tearDown(){

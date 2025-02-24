@@ -9,7 +9,7 @@
             <class name="internet.CheckboxesTest"/>
             <class name="internet.DropdownTest"/>
             <class name="internet.FormAuthenticationTest"/>
-            <!--                        <class name="internet.HoverTest"/>-->
+            <!--            <class name="internet.InteractionTest"/>-->
             <class name="internet.HyperLinkTest"/>
             <class name="internet.JavaScriptAlertTest"/>
             <!--                        <class name="internet.NestedFrameTest"/>-->

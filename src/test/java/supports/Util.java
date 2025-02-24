@@ -16,11 +16,18 @@ public class Util {
     }
 
     public static void main(String[] args) {
-        String filePath = "config.properties"; // Update this path as needed
+        String filePath = "E:\\Automation\\Automation_k47\\src\\test\\resources\\enviroment.properties"; // Update this path as needed
         Properties properties = readPropertiesFile(filePath);
 
         // Example: Retrieve a property value
-        String value = properties.getProperty("keyName", "DefaultValue");
+        String value = properties.getProperty("base_url", "DefaultValue");
         System.out.println("Property Value: " + value);
+    }
+    public static String getBaseUrl(){
+        String filePath = "E:\\Automation\\Automation_k47\\src\\test\\resources\\enviroment.properties"; // Update this path as needed
+        Properties properties = readPropertiesFile(filePath);
+
+        //Retrieve a property value
+        return properties.getProperty("base_url", "DefaultValue");
     }
 }

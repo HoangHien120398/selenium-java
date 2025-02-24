@@ -2,10 +2,11 @@ package internet.pages;
 
 import org.openqa.selenium.By;
 import supports.Browser;
+import supports.Util;
 
 public class BrokenImagePage {
     public void open(){
-        Browser.visit("https://the-internet.herokuapp.com/broken_images");
+        Browser.visit(Util.getBaseUrl() +"/broken_images");
     }
 
     public void checkLoadedImage(){

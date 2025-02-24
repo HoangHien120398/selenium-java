@@ -24,10 +24,9 @@ public class Browser {
     public static void openBrowser(String browser) {
         switch (browser) {
             case "chrome": {
-
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new");
-                driver = new ChromeDriver(chromeOptions);
+//                ChromeOptions chromeOptions = new ChromeOptions();
+//                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver();
                 break;
             }
             case "firefox": {

@@ -40,18 +40,18 @@ public class InteractionTest {
         Assert.assertEquals(interactionPage.getImageProfile(),"name: user1");
     }
 
-//    @Test
-//    void dragDropElements(){
-//        interactionPage.openDragDropElements();
-//
-//        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"A");
-//        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"B");
-//
-//        interactionPage.dragDrop();
-//
-//        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"B");
-//        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"A");
-//    }
+    @Test
+    void dragDropElements(){
+        interactionPage.openDragDropElements();
+
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"A");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"B");
+
+        interactionPage.dragDrop();
+
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"B");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"A");
+    }
 //    @Test
 //    void horizontalSlider(){
 //        WebDriver driver = new ChromeDriver();

@@ -2,6 +2,7 @@ package internet.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import supports.Browser;
 
 public class InteractionPage {
@@ -10,6 +11,9 @@ public class InteractionPage {
     }
     public void openDragDropElements(){
         Browser.visit("https://the-internet.herokuapp.com/drag_and_drop");
+    }
+    public void openSliderUrl(){
+        Browser.visit("https://the-internet.herokuapp.com/horizontal_slider");
     }
 
     public void hoverToImage(){
@@ -31,5 +35,13 @@ public class InteractionPage {
     }
     public String getLabelDragDropElement(String text){
         return Browser.getElement(By.xpath(locatorDragDropLabel(text))).getText();
+    }
+    public void clickAndHoldSilder(){
+        WebElement pointer = Browser.getElement(By.xpath("//div[@class='sliderContainer']/input"));
+        int width = pointer.getSize().getWidth();
+        Browser.clickSlider(pointer,width);
+    }
+    public boolean waitUntilVisibleText(String range){
+        return Browser.waitVisibleText(By.id("range"), range);
     }
 }

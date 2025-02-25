@@ -1,21 +1,8 @@
 package internet;
 
-import java.io.File;
-import java.io.IOException;
-import java.time.Duration;
-
 import internet.pages.InteractionPage;
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -52,43 +39,16 @@ public class InteractionTest {
         Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"B");
         Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"A");
     }
-//    @Test
-//    void horizontalSlider(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
-//
-//        Actions actions = new Actions(driver);
-//
-//        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
-//        int width = pointer.getSize().getWidth();
-//
-//        actions.clickAndHold(pointer)
-//                .moveByOffset(width,0)
-//                .perform();
-//
-//        Assert.assertEquals(driver.findElement(By.id("range")).getText(),"5");
-//        driver.quit();
-//    }
-//
-//@Test
-//    void horizontalSliderThrowEx() throws InterruptedException {
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/horizontal_slider");
-//
-//        Actions actions = new Actions(driver);
-//
-//        WebElement pointer = driver.findElement(By.xpath("//div[@class='sliderContainer']/input"));
-//        int width = pointer.getSize().getWidth();
-//
-//        actions.clickAndHold(pointer)
-//                .moveByOffset(width,0)
-//                .perform();
-//
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-//        Assert.assertTrue(wait.until(ExpectedConditions.textToBe(By.id("range"),"5")));
-//        driver.quit();
-//    }
-//
+
+@Test
+    void horizontalSliderThrowEx() throws InterruptedException {
+        interactionPage.openSliderUrl();
+        interactionPage.clickAndHoldSilder();
+        Browser.waitTime(60);
+
+        Assert.assertTrue(interactionPage.waitUntilVisibleText("5"));
+    }
+
 //    @Test
 //    void scrollDown() throws InterruptedException {
 //        WebDriver driver = new ChromeDriver();

@@ -8,6 +8,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -125,5 +126,17 @@ public class Browser {
     public static void dragDrop(WebElement source, WebElement target){
         Actions actions = new Actions(driver);
         actions.dragAndDrop(source,target).perform();
+    }
+    public static void clickSlider(WebElement pointer, int width){
+        Actions actions = new Actions(driver);
+        actions.clickAndHold(pointer)
+                .moveByOffset(width,0)
+                .perform();
+    }
+    public static void waitTime(int time){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(time));
+    }
+    public static boolean waitVisibleText(By locator, String range){
+        return wait.until(ExpectedConditions.textToBe(locator,range));
     }
 }

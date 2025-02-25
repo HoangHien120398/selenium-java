@@ -24,9 +24,9 @@ public class Browser {
     public static void openBrowser(String browser) {
         switch (browser) {
             case "chrome": {
-                ChromeOptions chromeOptions = new ChromeOptions();
-                chromeOptions.addArguments("--headless=new");
-                driver = new ChromeDriver(chromeOptions);
+//                ChromeOptions chromeOptions = new ChromeOptions();
+//                chromeOptions.addArguments("--headless=new");
+                driver = new ChromeDriver();
                 break;
             }
             case "firefox": {
@@ -121,5 +121,9 @@ public class Browser {
     public static void hover(WebElement element){
         Actions actions = new Actions(driver);
         actions.moveToElement(element).perform();
+    }
+    public static void dragDrop(WebElement source, WebElement target){
+        Actions actions = new Actions(driver);
+        actions.dragAndDrop(source,target).perform();
     }
 }

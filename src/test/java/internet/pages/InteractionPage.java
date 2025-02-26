@@ -23,7 +23,7 @@ public class InteractionPage {
     public void openKeyPressUrl(){
         Browser.visit("https://the-internet.herokuapp.com/key_presses");
     }
-    public void opendynamicLoadingUrl(){
+    public void openDynamicLoadingUrl(){
         Browser.visit("https://the-internet.herokuapp.com/dynamic_loading/1");
     }
 

@@ -1,7 +1,6 @@
 package internet;
 
 import internet.pages.InteractionPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -79,7 +78,7 @@ public class InteractionTest {
     }
     @Test
     void dynamicLoading() throws InterruptedException {
-        interactionPage.opendynamicLoadingUrl();
+        interactionPage.openDynamicLoadingUrl();
         interactionPage.startLoading();
 
         Browser.waitTime(10);
@@ -88,20 +87,12 @@ public class InteractionTest {
         Assert.assertEquals(interactionPage.getResultAfterCompleteLoading(),"Hello World!");
     }
 
-//    @Test
-//    void captureScreenShot(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/context_menu");
-//
-//        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
-//        File srcFile = takesScreenshot.getScreenshotAs(OutputType.FILE);
-//        File destFile = new File(String.format("target/screenshot-%s-%s.png", "context-menu", System.currentTimeMillis()));
-//        try {
-//            FileUtils.copyFile(srcFile, destFile);
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    @Test
+    void captureScreenShot(){
+        interactionPage.openScrollBarUrl();
+
+        Browser.captureScreen("contextMenu");
+    }
     @AfterMethod
     void tearDown() {
         Browser.quit();

@@ -104,7 +104,7 @@ public class Browser {
     }
     public static void acceptAlert(String promptWithText){
         driver.switchTo().alert().sendKeys(promptWithText);
-        driver.switchTo().alert().accept();
+        acceptAlert();
     }
 
     public static WebElement getElement(By locator){
@@ -149,6 +149,6 @@ public class Browser {
     public static void rightClick(By locator){
         Actions actions = new Actions(driver);
         actions.contextClick(Browser.getElement(locator)).perform();
-        driver.switchTo().alert().accept();
+        acceptAlert();
     }
 }

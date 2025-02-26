@@ -58,17 +58,12 @@ public class InteractionTest {
         Browser.scrollBar();
     }
 
-//    @Test
-//    void rightClick(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/context_menu");
-//
-//        Actions actions = new Actions(driver);
-//        actions.contextClick(driver.findElement(By.id("hot-spot"))).perform();
-//        driver.switchTo().alert().accept();
-//        driver.quit();
-//    }
-//
+    @Test
+    void rightClick(){
+        interactionPage.openRightClickUrl();
+        interactionPage.rightClickContext();
+    }
+
 //    @Test
 //    void keyPress(){
 //        WebDriver driver = new ChromeDriver();

@@ -2,7 +2,6 @@ package internet.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import supports.Browser;
 
 public class InteractionPage {
@@ -17,6 +16,9 @@ public class InteractionPage {
     }
     public void openScrollBarUrl(){
         Browser.visit("https://the-internet.herokuapp.com/infinite_scroll");
+    }
+    public void openRightClickUrl(){
+        Browser.visit("https://the-internet.herokuapp.com/context_menu");
     }
 
     public void hoverToImage(){
@@ -46,5 +48,8 @@ public class InteractionPage {
     }
     public boolean waitUntilVisibleText(String range){
         return Browser.waitVisibleText(By.id("range"), range);
+    }
+    public void rightClickContext(){
+        Browser.rightClick(By.id("hot-spot"));
     }
 }

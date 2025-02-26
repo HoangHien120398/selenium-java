@@ -146,4 +146,9 @@ public class Browser {
             WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2000));
         }
     }
+    public static void rightClick(By locator){
+        Actions actions = new Actions(driver);
+        actions.contextClick(Browser.getElement(locator)).perform();
+        driver.switchTo().alert().accept();
+    }
 }

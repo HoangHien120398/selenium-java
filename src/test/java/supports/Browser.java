@@ -139,4 +139,11 @@ public class Browser {
     public static boolean waitVisibleText(By locator, String range){
         return wait.until(ExpectedConditions.textToBe(locator,range));
     }
+    public static void scrollBar(){
+        Actions actions = new Actions(driver);
+        for (int i = 0; i < 5; i++) {
+            actions.scrollByAmount(0,500).perform();
+            WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(2000));
+        }
+    }
 }

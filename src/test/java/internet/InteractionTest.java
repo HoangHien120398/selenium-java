@@ -2,6 +2,9 @@ package internet;
 
 import internet.pages.InteractionPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -49,20 +52,12 @@ public class InteractionTest {
         Assert.assertTrue(interactionPage.waitUntilVisibleText("5"));
     }
 
-//    @Test
-//    void scrollDown() throws InterruptedException {
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/infinite_scroll");
-//
-//        Actions actions = new Actions(driver);
-//
-//        for (int i = 0; i < 5; i++) {
-//            actions.scrollByAmount(0,500).perform();
-//            Thread.sleep(2000);
-//        }
-//        driver.quit();
-//    }
-//
+    @Test
+    void scrollDown() throws InterruptedException {
+        interactionPage.openScrollBarUrl();
+        Browser.scrollBar();
+    }
+
 //    @Test
 //    void rightClick(){
 //        WebDriver driver = new ChromeDriver();

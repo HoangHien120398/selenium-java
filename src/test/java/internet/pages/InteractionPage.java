@@ -15,6 +15,9 @@ public class InteractionPage {
     public void openSliderUrl(){
         Browser.visit("https://the-internet.herokuapp.com/horizontal_slider");
     }
+    public void openScrollBarUrl(){
+        Browser.visit("https://the-internet.herokuapp.com/infinite_scroll");
+    }
 
     public void hoverToImage(){
         WebElement image1 = Browser.getElement(By.xpath("//div[@class='example']/div[1]/img"));

@@ -2,6 +2,7 @@ package internet;
 
 import internet.pages.InteractionPage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -16,34 +17,34 @@ public class InteractionTest {
     InteractionPage interactionPage;
 
     @BeforeMethod
-    void setup(){
+    void setup() {
         interactionPage = new InteractionPage();
         Browser.openBrowser("chrome");
     }
 
     @Test
-    void hoverToImage(){
+    void hoverToImage() {
         interactionPage.openHoverToImage();
 
         interactionPage.hoverToImage();
 
-        Assert.assertEquals(interactionPage.getImageProfile(),"name: user1");
+        Assert.assertEquals(interactionPage.getImageProfile(), "name: user1");
     }
 
     @Test
-    void dragDropElements(){
+    void dragDropElements() {
         interactionPage.openDragDropElements();
 
-        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"A");
-        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"B");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"), "A");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"), "B");
 
         interactionPage.dragDrop();
 
-        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"),"B");
-        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"),"A");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("a"), "B");
+        Assert.assertEquals(interactionPage.getLabelDragDropElement("b"), "A");
     }
 
-@Test
+    @Test
     void horizontalSliderThrowEx() throws InterruptedException {
         interactionPage.openSliderUrl();
         interactionPage.clickAndHoldSilder();
@@ -59,34 +60,34 @@ public class InteractionTest {
     }
 
     @Test
-    void rightClick(){
+    void rightClick() {
         interactionPage.openRightClickUrl();
         interactionPage.rightClickContext();
     }
 
-//    @Test
-//    void keyPress(){
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/key_presses");
-//        Actions actions = new Actions(driver);
-//
-//        actions.keyDown(Keys.COMMAND).perform();
-//        System.out.println(driver.findElement(By.id("result")).getText());
-//
-//        actions.keyDown("A").perform();
-//        System.out.println(driver.findElement(By.id("result")).getText());
-//
-//        actions.keyDown(Keys.ENTER).perform();
-//        System.out.println(driver.findElement(By.id("result")).getText());
-//        driver.quit();
-//    }
+    @Test
+    void keyPress() {
+        interactionPage.openKeyPressUrl();
+
+        Actions actions = Browser.getActions();
+        actions.keyDown(Keys.COMMAND).perform();
+        Assert.assertEquals(interactionPage.getResult(), "You entered: WIN");
+
+        actions.keyDown("A").perform();
+        Assert.assertEquals(interactionPage.getResult(), "You entered: A");
+
+        actions.keyDown(Keys.ENTER).perform();
+        Assert.assertEquals(interactionPage.getResult(), "You entered: ENTER");
+
+    }
 //    @Test
 //    void dynamicLoading() throws InterruptedException {
 //        WebDriver driver = new ChromeDriver();
 //        driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
 //        driver.findElement(By.xpath("//button[.='Start']")).click();
 //
-////        Thread.sleep(5000);
+
+    /// /        Thread.sleep(5000);
 //        WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
 //        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
 //
@@ -109,9 +110,8 @@ public class InteractionTest {
 //            throw new RuntimeException(e);
 //        }
 //    }
-
     @AfterMethod
-    void tearDown(){
+    void tearDown() {
         Browser.quit();
     }
 

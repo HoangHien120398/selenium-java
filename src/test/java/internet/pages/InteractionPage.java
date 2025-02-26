@@ -20,6 +20,9 @@ public class InteractionPage {
     public void openRightClickUrl(){
         Browser.visit("https://the-internet.herokuapp.com/context_menu");
     }
+    public void openKeyPressUrl(){
+        Browser.visit("https://the-internet.herokuapp.com/key_presses");
+    }
 
     public void hoverToImage(){
         WebElement image1 = Browser.getElement(By.xpath("//div[@class='example']/div[1]/img"));
@@ -51,5 +54,8 @@ public class InteractionPage {
     }
     public void rightClickContext(){
         Browser.rightClick(By.id("hot-spot"));
+    }
+    public String getResult(){
+        return Browser.getElement(By.id("result")).getText();
     }
 }

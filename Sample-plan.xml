@@ -16,8 +16,8 @@
             </class>
             <class name="internet.HyperLinkTest"/>
             <class name="internet.JavaScriptAlertTest"/>
-            <!--                        <class name="internet.NestedFrameTest"/>-->
-            <!--                        <class name="internet.WebTableTest"/>-->
+            <class name="internet.NestedFrameTest"/>
+            <!--                                    <class name="internet.WebTableTest"/>-->
             <!--                        <class name="internet.WebTableTest1"/>-->
         </classes>
     </test>

@@ -174,4 +174,15 @@ public class Browser {
     public static Actions getActions() {
         return new Actions(driver);
     }
+
+    public static void switchFrame(String name){
+        driver.switchTo().frame(name);
+    }
+
+    public static void switchToParent(){
+        driver.switchTo().parentFrame();
+    }
+    public static void switchToDefault(){
+        driver.switchTo().defaultContent();
+    }
 }

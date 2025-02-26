@@ -3,10 +3,7 @@ package internet;
 import internet.pages.InteractionPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -71,31 +68,26 @@ public class InteractionTest {
 
         Actions actions = Browser.getActions();
         actions.keyDown(Keys.COMMAND).perform();
-        Assert.assertEquals(interactionPage.getResult(), "You entered: WIN");
+        Assert.assertEquals(interactionPage.getResultWhenCLickContent(), "You entered: WIN");
 
         actions.keyDown("A").perform();
-        Assert.assertEquals(interactionPage.getResult(), "You entered: A");
+        Assert.assertEquals(interactionPage.getResultWhenCLickContent(), "You entered: A");
 
         actions.keyDown(Keys.ENTER).perform();
-        Assert.assertEquals(interactionPage.getResult(), "You entered: ENTER");
+        Assert.assertEquals(interactionPage.getResultWhenCLickContent(), "You entered: ENTER");
 
     }
-//    @Test
-//    void dynamicLoading() throws InterruptedException {
-//        WebDriver driver = new ChromeDriver();
-//        driver.get("https://the-internet.herokuapp.com/dynamic_loading/1");
-//        driver.findElement(By.xpath("//button[.='Start']")).click();
-//
+    @Test
+    void dynamicLoading() throws InterruptedException {
+        interactionPage.opendynamicLoadingUrl();
+        interactionPage.startLoading();
 
-    /// /        Thread.sleep(5000);
-//        WebDriverWait wait= new WebDriverWait(driver,Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("finish")));
-//
-//        Assert.assertEquals(driver.findElement(By.id("finish")).getText(),"Hello World!");
-//        driver.quit();
-//    }
-//
-//
+        Browser.waitTime(10);
+        interactionPage.waitUntilCompleteLoading();
+
+        Assert.assertEquals(interactionPage.getResultAfterCompleteLoading(),"Hello World!");
+    }
+
 //    @Test
 //    void captureScreenShot(){
 //        WebDriver driver = new ChromeDriver();

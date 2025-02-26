@@ -153,6 +153,9 @@ public class Browser {
     public static boolean waitVisibleText(By locator, String range) {
         return wait.until(ExpectedConditions.textToBe(locator, range));
     }
+    public static void waitCompleteLoading(By locator){
+        wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
 
     public static void scrollBar() {
         Actions actions = new Actions(driver);

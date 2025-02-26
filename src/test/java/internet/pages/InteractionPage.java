@@ -23,6 +23,9 @@ public class InteractionPage {
     public void openKeyPressUrl(){
         Browser.visit("https://the-internet.herokuapp.com/key_presses");
     }
+    public void opendynamicLoadingUrl(){
+        Browser.visit("https://the-internet.herokuapp.com/dynamic_loading/1");
+    }
 
     public void hoverToImage(){
         WebElement image1 = Browser.getElement(By.xpath("//div[@class='example']/div[1]/img"));
@@ -55,7 +58,16 @@ public class InteractionPage {
     public void rightClickContext(){
         Browser.rightClick(By.id("hot-spot"));
     }
-    public String getResult(){
+    public String getResultWhenCLickContent(){
         return Browser.getElement(By.id("result")).getText();
+    }
+    public void startLoading(){
+        Browser.getElement(By.xpath("//button[.='Start']")).click();
+    }
+    public void waitUntilCompleteLoading(){
+        Browser.waitCompleteLoading(By.id("finish"));
+    }
+    public String getResultAfterCompleteLoading(){
+        return Browser.getElement(By.id("finish")).getText();
     }
 }

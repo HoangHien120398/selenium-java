@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class WebTableTest1 {
+public class WebTableByAddPersonListTest {
     List<Person> person;
     @BeforeClass
     void readData(){

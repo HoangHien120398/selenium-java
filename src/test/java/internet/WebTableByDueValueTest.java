@@ -10,7 +10,7 @@
  import java.util.List;
  import java.util.stream.Collectors;
 
- public class WebTableTest {
+ public class WebTableByDueValueTest {
      @Test
      public void tc05(){
          WebDriver driver = new ChromeDriver();
